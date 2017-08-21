@@ -1853,6 +1853,14 @@ NRS.addPagination = function () {
 		}
 	};
 
+        NRS.transformSecretPhrase = function (secretPhrase) {
+            if (secretPhrase=="") {
+                return "";
+            }
+            
+            return NRS.constants.SECRETPHRASE_PREFIX + secretPhrase;
+	};
+        
     NRS.printEnvInfo = function() {
         NRS.logProperty("navigator.userAgent");
         NRS.logProperty("navigator.platform");
@@ -1950,6 +1958,7 @@ NRS.addPagination = function () {
 	    return storage;
 	}
 
+        
 	return NRS;
 }(NRS || {}, jQuery));
 

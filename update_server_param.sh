@@ -182,10 +182,10 @@ fi
 #echo 'mv /home/wbx/wbx_db /home/wbx/wbx_db_old'
 #mv /home/wbx/wbx_db /home/wbx/wbx_db_old
 #######################################################
-echo 'rm -rf  $homeDir/src/java/windesktop.old'
-rm -rf  $homeDir//src/java/windesktop.old
-echo 'mv  $homeDir/src/java/windesktop  $homeDir/src/java/windesktop.old'
-mv  $homeDir/src/java/windesktop  $homeDir/src/java/windesktop.old
+echo 'rm -rf  $homeDir/src/java/wbxdesktop.old'
+rm -rf  $homeDir//src/java/wbxdesktop.old
+echo 'mv  $homeDir/src/java/wbxdesktop  $homeDir/src/java/wbxdesktop.old'
+mv  $homeDir/src/java/wbxdesktop  $homeDir/src/java/wbxdesktop.old
 echo 'rm -rf  $homeDir/jre-old'
 rm -rf  $homeDir/jre-old
 echo 'mv  $homeDir/jre  $homeDir/jre-old'

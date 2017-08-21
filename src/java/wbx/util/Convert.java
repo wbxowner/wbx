@@ -109,6 +109,8 @@ public final class Convert {
         account = account.toUpperCase();
 //        if (account.startsWith("WBX-")) {
         if (account.startsWith(CURRENCY_NAME + "-")) {
+            Logger.logInfoMessage("account substring "+account.substring(4));
+            Logger.logInfoMessage("account decode "+Crypto.rsDecode(account.substring(4)));
             return Crypto.rsDecode(account.substring(4));
         } else {
             return Long.parseUnsignedLong(account);

@@ -14,7 +14,7 @@
  *
  */
 
-package windesktop;
+package wbxdesktop;
 
 import com.sun.javafx.scene.control.skin.ContextMenuContent;
 import javafx.event.EventHandler;

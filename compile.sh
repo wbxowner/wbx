@@ -15,7 +15,7 @@ javac -encoding utf8 -sourcepath "${SP}" -classpath "${CP}" -d classes/ @sources
 echo "wbx core class files compiled successfully"
 
 echo "compiling wbx desktop..."
-find src/java/windesktop/ -name "*.java" > sources.tmp
+find src/java/wbxdesktop/ -name "*.java" > sources.tmp
 javac -encoding utf8 -sourcepath "${SP}" -classpath "${CP}" -d classes/ @sources.tmp
 if [ $? -eq 0 ]; then
     echo "wbx desktop class files compiled successfully"

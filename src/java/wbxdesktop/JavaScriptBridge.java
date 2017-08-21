@@ -14,7 +14,7 @@
  *
  */
 
-package windesktop;
+package wbxdesktop;
 
 import javafx.application.Platform;
 import javafx.scene.input.Clipboard;

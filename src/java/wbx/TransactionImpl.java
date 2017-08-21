@@ -1097,22 +1097,18 @@ final class TransactionImpl implements Transaction {
         return type.isUnconfirmedDuplicate(this, duplicates);
     }
 
-    private long getMinimumFeeNQT(int blockchainHeight) {
+    public long getMinimumFeeNQT(int blockchainHeight) {
         long totalFee = 0;
+
         for (Appendix.AbstractAppendix appendage : appendages) {
             appendage.loadPrunable(this);
-//            if (blockchainHeight < appendage.getBaselineFeeHeight()) {
-//                return 0; // No need to validate fees before baseline block
-//            }
             Fee fee = blockchainHeight >= appendage.getNextFeeHeight() ? appendage.getNextFee(this) : appendage.getBaselineFee(this);
             totalFee = Math.addExact(totalFee, fee.getFee(this, appendage));
-            
-        	//Logger.logInfoMessage(String.format("Appendage %s fee=%d " + Constants.COIN_NAME + "; minimumFee=%d " + Constants.COIN_NAME + " at height %d.",appendage.getAppendixName(), fee.getFee(this, appendage), ((long) totalFee), blockchainHeight));
         }
         if (referencedTransactionFullHash != null) {
             totalFee = Math.addExact(totalFee, Constants.ONE_WIN);
         }
-        //Logger.logInfoMessage(String.format("getMinimumFeeNQT=%d " + Constants.COIN_NAME + " at height %d.",((long) totalFee), blockchainHeight));
+
         return totalFee;
     }
 

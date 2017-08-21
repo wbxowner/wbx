@@ -9,7 +9,7 @@ SP=src/java/
 /bin/rm -rf addons/classes
 /bin/mkdir -p addons/classes/
 
-javac -encoding utf8 -sourcepath "${SP}" -classpath "${CP}" -d classes/ src/java/wbx/*.java src/java/wbx/*/*.java src/java/wbx/*/*/*.java src/java/windesktop/*.java || exit 1
+javac -encoding utf8 -sourcepath "${SP}" -classpath "${CP}" -d classes/ src/java/wbx/*.java src/java/wbx/*/*.java src/java/wbx/*/*/*.java src/java/wbxdesktop/*.java || exit 1
 
 echo "wbx class files compiled successfully"
 

@@ -103,7 +103,7 @@ var NRS = (function(NRS, $) {
 		var isOffline = !!$(this).find(".mobile-offline").val();
         if (!NRS.rememberPassword) {
 			var secretPhrase = data.secretPhrase;
-			var publicKey = NRS.getPublicKey(converters.stringToHexString(secretPhrase));
+			var publicKey = NRS.getPublicKey(converters.stringToHexString(NRS.transformSecretPhrase(secretPhrase)));
 			if (publicKey != NRS.publicKey && !isOffline) {
 				tokenOutput.html($.t("error_incorrect_passphrase"));
 				tokenOutput.addClass("callout-danger").removeClass("callout-info").show();
