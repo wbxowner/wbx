@@ -42,7 +42,7 @@ var NRS = (function (NRS, $) {
 			}
 		}
 
-		return NRS.getPublicKey(converters.stringToHexString(secretPhrase));
+		return NRS.getPublicKey(converters.stringToHexString(NRS.transformSecretPhrase(secretPhrase)));
 	};
 
 	NRS.getPublicKey = function(secretPhrase, isAccountNumber) {
@@ -70,12 +70,12 @@ var NRS = (function (NRS, $) {
 	};
 
 	NRS.getPrivateKey = function(secretPhrase) {
-		var bytes = simpleHash(converters.stringToByteArray(secretPhrase));
-        return converters.shortArrayToHexString(curve25519_clamp(converters.byteArrayToShortArray(bytes)));
+		var bytes = simpleHash(converters.stringToByteArray(NRS.transformSecretPhrase(secretPhrase)));
+            return converters.shortArrayToHexString(curve25519_clamp(converters.byteArrayToShortArray(bytes)));
 	};
 
 	NRS.getAccountId = function(secretPhrase) {
-		return NRS.getAccountIdFromPublicKey(NRS.getPublicKey(converters.stringToHexString(secretPhrase)));
+		return NRS.getAccountIdFromPublicKey(NRS.getPublicKey(converters.stringToHexString(NRS.transformSecretPhrase(secretPhrase))));
 	};
 
 	NRS.getAccountIdFromPublicKey = function(publicKey, RSFormat) {
@@ -152,7 +152,7 @@ var NRS = (function (NRS, $) {
 
     NRS.encryptNote = function(message, options, secretPhrase) {
 		try {
-			options = NRS.getEncryptionKeys(options, secretPhrase);
+			options = NRS.getEncryptionKeys(options, NRS.transformSecretPhrase(secretPhrase));
 			var encrypted = encryptData(converters.stringToByteArray(message), options);
 			return {
 				"message": converters.byteArrayToHexString(encrypted.data),
@@ -172,7 +172,7 @@ var NRS = (function (NRS, $) {
 
 	NRS.decryptData = function(data, options, secretPhrase) {
 		try {
-			return NRS.decryptNote(message, options, secretPhrase);
+			return NRS.decryptNote(message, options, NRS.transformSecretPhrase(secretPhrase));
 		} catch (err) {
 			if (err.errorCode && err.errorCode == 1) {
 				return false;
@@ -290,7 +290,7 @@ var NRS = (function (NRS, $) {
 			}
 		}
 		var messageBytes = converters.hexStringToByteArray(message);
-		var secretPhraseBytes = converters.hexStringToByteArray(secretPhrase);
+		var secretPhraseBytes = converters.hexStringToByteArray(NRS.transformSecretPhrase(secretPhrase));
 
         var digest = simpleHash(secretPhraseBytes);
         var s = curve25519.keygen(digest).s;
@@ -745,8 +745,10 @@ var NRS = (function (NRS, $) {
                 return false;
             }
 		}
+
 		return true;
 	}
+
 
 	function curve25519_clamp(curve) {
 		curve[0] &= 0xFFF8;

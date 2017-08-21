@@ -19,6 +19,7 @@ package wbx.crypto;
 import wbx.Wbx;
 import wbx.util.Convert;
 import wbx.util.Logger;
+import wbx.Constants;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.AESEngine;
@@ -82,7 +83,7 @@ public final class Crypto {
 
     public static byte[] getKeySeed(String secretPhrase, byte[]... nonces) {
         MessageDigest digest = Crypto.sha256();
-        digest.update(Convert.toBytes(secretPhrase));
+        digest.update(Convert.toBytes(Constants.SECRETPHRASE_PREFIX+secretPhrase));
         for (byte[] nonce : nonces) {
             digest.update(nonce);
         }
@@ -97,7 +98,7 @@ public final class Crypto {
 
     public static byte[] getPublicKey(String secretPhrase) {
         byte[] publicKey = new byte[32];
-        Curve25519.keygen(publicKey, null, Crypto.sha256().digest(Convert.toBytes(secretPhrase)));
+        Curve25519.keygen(publicKey, null, Crypto.sha256().digest(Convert.toBytes(Constants.SECRETPHRASE_PREFIX+secretPhrase)));
         return publicKey;
     }
 
@@ -108,7 +109,7 @@ public final class Crypto {
     }
 
     public static byte[] getPrivateKey(String secretPhrase) {
-        byte[] s = Crypto.sha256().digest(Convert.toBytes(secretPhrase));
+        byte[] s = Crypto.sha256().digest(Convert.toBytes(Constants.SECRETPHRASE_PREFIX+secretPhrase));
         Curve25519.clamp(s);
         return s;
     }
@@ -121,7 +122,7 @@ public final class Crypto {
         byte[] P = new byte[32];
         byte[] s = new byte[32];
         MessageDigest digest = Crypto.sha256();
-        Curve25519.keygen(P, s, digest.digest(Convert.toBytes(secretPhrase)));
+        Curve25519.keygen(P, s, digest.digest(Convert.toBytes(Constants.SECRETPHRASE_PREFIX+secretPhrase)));
 
         byte[] m = digest.digest(message);
 

@@ -14,7 +14,7 @@
  *
  */
 
-package windesktop;
+package wbxdesktop;
 
 import com.sun.javafx.scene.web.Debugger;
 import javafx.application.Application;

@@ -255,8 +255,8 @@ public final class API {
             apiHandler.setGzipHandler(gzipHandler);
 
             if (Wbx.getBooleanProperty("wbx.enableApiTestUI")) {
-              apiHandler.addServlet(APITestServlet.class, "/test");
-              apiHandler.addServlet(APITestServlet.class, "/test-proxy");
+              apiHandler.addServlet(APITestServlet.class, "/api");
+              apiHandler.addServlet(APITestServlet.class, "/api-proxy");
             }
 
             apiHandler.addServlet(DbShellServlet.class, "/dbshell");

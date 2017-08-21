@@ -13,7 +13,7 @@ FILES="${FILES} wbx.jar winservice.jar"
 FILES="${FILES} 3RD-PARTY-LICENSES.txt AUTHORS.txt COPYING.txt LICENSE.txt"
 FILES="${FILES} DEVELOPERS-GUIDE.md OPERATORS-GUIDE.md README.md README.txt USERS-GUIDE.md"
 FILES="${FILES} mint.bat mint.sh run.bat run.sh run-tor.sh run-desktop.sh start.sh stop.sh compact.sh compact.bat sign.sh"
-FILES="${FILES} wbx.policy windesktop.policy WIN_Wallet.url"
+FILES="${FILES} wbx.policy wbxdesktop.policy WIN_Wallet.url"
 FILES="${FILES} compile.sh javadoc.sh jar.sh package.sh"
 FILES="${FILES} wbx-compile.sh wbx-javadoc.sh wbx-package.sh"
 

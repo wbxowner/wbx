@@ -109,17 +109,17 @@ public class DesktopSystemTray {
 
         showDesktopApplication.addActionListener(e -> {
             try {
-                Class.forName("windesktop.DesktopApplication").getMethod("launch").invoke(null);
+                Class.forName("wbxdesktop.DesktopApplication").getMethod("launch").invoke(null);
             } catch (ReflectiveOperationException exception) {
-                Logger.logInfoMessage("windesktop.DesktopApplication failed to launch", exception);
+                Logger.logInfoMessage("wbxdesktop.DesktopApplication failed to launch", exception);
             }
         });
 
         refreshDesktopApplication.addActionListener(e -> {
             try {
-                Class.forName("windesktop.DesktopApplication").getMethod("refresh").invoke(null);
+                Class.forName("wbxdesktop.DesktopApplication").getMethod("refresh").invoke(null);
             } catch (ReflectiveOperationException exception) {
-                Logger.logInfoMessage("windesktop.DesktopApplication failed to refresh", exception);
+                Logger.logInfoMessage("wbxdesktop.DesktopApplication failed to refresh", exception);
             }
         });
 

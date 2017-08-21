@@ -420,7 +420,7 @@ var NRS = (function(NRS, $) {
     NRS.forms.startShuffler = function ($modal) {
         var data = NRS.getFormData($modal.find("form:first"));
         if (data.recipientSecretPhrase) {
-            data.recipientPublicKey = NRS.getPublicKey(converters.stringToHexString(data.recipientSecretPhrase));
+            data.recipientPublicKey = NRS.getPublicKey(converters.stringToHexString(NRS.transformSecretPhrase(data.recipientSecretPhrase)));
             delete data.recipientSecretPhrase;
         }
         return {

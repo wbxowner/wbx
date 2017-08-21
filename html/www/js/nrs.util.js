@@ -1537,7 +1537,7 @@ var NRS = (function (NRS, $, undefined) {
 
     NRS.generateToken = function(message, secretPhrase) {
         var messageBytes = NRS.getUtf8Bytes(message);
-        var pubKeyBytes = converters.hexStringToByteArray(NRS.getPublicKey(converters.stringToHexString(secretPhrase)));
+        var pubKeyBytes = converters.hexStringToByteArray(NRS.getPublicKey(converters.stringToHexString(NRS.transformSecretPhrase(secretPhrase))));
         var token = pubKeyBytes;
 
         var tsb = [];

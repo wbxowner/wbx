@@ -425,6 +425,7 @@ public final class ParameterParser {
                 throw new ParameterException(incorrect(publicKeyParam));
             }
         } else {
+            Logger.logInfoMessage("secretPhrase "+secretPhrase);
             return Crypto.getPublicKey(secretPhrase);
         }
     }
